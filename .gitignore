@@ -1,0 +1,17 @@
+node_modules/
+
+.env/
+
+.idea/
+
+.env/
+
+log.html
+
+output.xml
+
+playwright-log.txt
+
+report.html
+
+*.png
