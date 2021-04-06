@@ -1,8 +1,7 @@
 *** Settings ***
 Library    SeleniumLibrary    
-
-
-
+Library    OperatingSystem    
+Suite Teardown    Close All Browsers
 *** Test Cases ***
 KeyWordTestCases
     [Documentation]    This is a Sample Test Case
@@ -13,7 +12,11 @@ KeyWordTestCases
     ...    
     [Tags]    Login
     Log    Begin
+    Set Environment Variable    no_proxy    127.0.0.1
     Open Browser    ${URL}    ${browser}
+    Set Browser Implicit Wait    5
+    Maximize Browser Window
+    Sleep    2
     LoginKeyword
     Sleep    2    
     Close Browser    
@@ -21,9 +24,12 @@ KeyWordTestCases
     Log    End    
     
 
+  
+
+
 *** Variables ***
 ${URL}    https://opensource-demo.orangehrmlive.com/
-${browser}    Chrome
+${browser}    chrome
 @{credentials}    Admin    admin123
 &{credentialsMap}    userName=Admin    password=admin123
 
